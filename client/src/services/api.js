@@ -1,9 +1,11 @@
 // API Service Module for Backend Communication
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 /**
  * Submit student registration details to Express Backend API
- * @param {Object} studentData 
+ * @param {Object} studentData
  * @returns {Promise<Object>}
  */
 export const registerStudent = async (studentData) => {
@@ -19,14 +21,20 @@ export const registerStudent = async (studentData) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || 'Registration failed. Please try again.');
+      throw new Error(
+        data.message || 'Registration failed. Please try again.'
+      );
     }
 
     return data;
+
   } catch (error) {
     if (error.name === 'TypeError' && error.message.includes('fetch')) {
-      throw new Error('Unable to connect to the backend server. Please ensure Express server is running on port 5000.');
+      throw new Error(
+        'Unable to connect to the backend server. Please try again later.'
+      );
     }
+
     throw error;
   }
 };
