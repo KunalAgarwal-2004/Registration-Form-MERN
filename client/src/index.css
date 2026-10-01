@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #eef2ff;
+  color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Page Layout & Background Graphics */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 45%, #ede9fe 75%, #e0e7ff 100%);
+  overflow: hidden;
+}
+
+/* Background Decorative Elements */
+.bg-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-graphic {
+  position: absolute;
+  color: #6366f1;
+  opacity: 0.18;
+}
+
+.cap-left {
+  top: 8%;
+  left: 3%;
+  width: 130px;
+  transform: rotate(-15deg);
+}
+
+.books-left {
+  top: 36%;
+  left: 2%;
+  width: 120px;
+  transform: rotate(-10deg);
+}
+
+.book-open-right {
+  top: 25%;
+  right: 3%;
+  width: 140px;
+  transform: rotate(12deg);
+}
+
+.school-right {
+  bottom: 22%;
+  right: 2%;
+  width: 150px;
+}
+
+.plant-left {
+  bottom: 4%;
+  left: -20px;
+  width: 180px;
+  color: #3b82f6;
+  opacity: 0.25;
+}
+
+.plant-right {
+  bottom: 4%;
+  right: -20px;
+  width: 180px;
+  color: #1e3a8a;
+  opacity: 0.25;
+}
+
+/* Dots Pattern */
+.dots-pattern {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.25;
+  background-image: radial-gradient(#4f46e5 2px, transparent 2px);
+  background-size: 14px 14px;
+}
+
+.dots-top-left {
+  top: 40px;
+  left: 40px;
+}
+
+.dots-bottom-right {
+  bottom: 120px;
+  right: 50px;
+}
+
+/* Wavy Lines */
+.decor-wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.registration-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 580px;
+}
+
+/* Card Container */
+.registration-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 44px 48px;
+  box-shadow: 
+    0 20px 40px -15px rgba(79, 70, 229, 0.12),
+    0 0 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease;
+}
+
+/* Form Header */
+.form-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  color: #ffffff;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+}
+
+.graduation-cap-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.title-underline {
+  width: 44px;
+  height: 4px;
+  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+/* Status Alert */
+.status-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.status-alert.success {
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.status-alert.error {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.alert-icon {
+  flex-shrink: 0;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 7px;
+}
+
+.required-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Input Wrapper & Styling */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.input-wrapper:focus-within {
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.input-wrapper.has-error {
+  border-color: #ef4444;
+  background-color: #fff5f5;
+}
+
+.input-wrapper.has-error:focus-within {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+.input-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 14px;
+  padding-right: 10px;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.phone-prefix-box {
+  gap: 8px;
+  padding-right: 12px;
+}
+
+.country-code {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.input-wrapper input {
+  flex: 1;
+  height: 48px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: #0f172a;
+  font-weight: 500;
+  padding-right: 14px;
+}
+
+.input-wrapper input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* Number Inputs Arrow Fix */
+.input-wrapper input[type="number"]::-webkit-inner-spin-button,
+.input-wrapper input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-wrapper input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-suffix {
+  padding-right: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  user-select: none;
+}
+
+/* Error Text */
+.error-text {
+  font-size: 12.5px;
+  color: #ef4444;
+  font-weight: 600;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  height: 52px;
+  margin-top: 28px;
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 24px -6px rgba(79, 70, 229, 0.45);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -6px rgba(79, 70, 229, 0.55);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.send-icon {
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) .send-icon {
+  transform: translateX(3px) translateY(-1px);
+}
+
+/* Spinner for Loading State */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 640px) {
+  .page-container {
+    padding: 20px 14px;
+  }
+
+  .registration-card {
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+
+  .floating-graphic {
+    display: none;
+  }
+}
