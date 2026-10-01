@@ -1,9 +1,10 @@
+
 # Student Registration System
 
 A full-stack web application for student registration built with React (JSX), Node.js, Express.js, MongoDB, Mongoose, JWT authentication, and Nodemailer.
 
 ---
-
+  
 ## 1. Project Overview
 The Student Registration System allows applicants to fill out their academic and personal details through a sleek, responsive, glassmorphic UI. Submitted applications are validated both on the client and server, stored in MongoDB with unique constraints (such as non-duplicate Roll Numbers), and trigger automated admin email notifications via Nodemailer. Protected administrative APIs allow authenticated admins to view and manage registered applicants using JWT tokens.
 
